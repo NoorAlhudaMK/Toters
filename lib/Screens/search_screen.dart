@@ -9,8 +9,20 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+
+  /// I put the list inside build FUNCTION, cuz listView does not work outside
+  /// build FUNCTION cuz I use List which its items are function calls ....
+
   @override
   Widget build(BuildContext context) {
+    List<Widget> offers = [
+      buildPost(flowers, "Happy Hour 😍", "Lorem ipsum", 28),
+      buildPost(flowers, "Weakly Discount 🕑", "Lorem ipsum", 26),
+      buildPost(flowers, "Cashback 💲", "Lorem ipsum", 10),
+      buildPost(flowers, "Happy Hour 😍", "Lorem ipsum", 28),
+      buildPost(flowers, "Happy Hour 🕑", "Lorem ipsum", 28),
+      buildPost(flowers, "Happy Hour 💲", "Lorem ipsum", 28),
+    ];
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -52,9 +64,9 @@ class _SearchPageState extends State<SearchPage> {
                     height: MediaQuery.of(context).size.width * 0.25,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("assets/images/Delivery-amico.png"),
-                          fit: BoxFit.cover,
-                        )),
+                      image: AssetImage("assets/images/Delivery-amico.png"),
+                      fit: BoxFit.cover,
+                    )),
                   ),
                   Spacer(),
                   Container(
@@ -96,20 +108,14 @@ class _SearchPageState extends State<SearchPage> {
                 ],
               ),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.6,
-              child: ListView(
-                children: [
-                  buildPost(flowers, "Happy Hour 😍", "Lorem ipsum", 28),
-                  buildPost(flowers, "Weakly Discount 🕑", "Lorem ipsum", 26),
-                  buildPost(flowers, "Cashback 💲", "Lorem ipsum", 10),
-                  buildPost(flowers, "Happy Hour 😍", "Lorem ipsum", 28),
-                  buildPost(flowers, "Happy Hour 🕑", "Lorem ipsum", 28),
-                  buildPost(flowers, "Happy Hour 💲", "Lorem ipsum", 28),
-                ],
-              ),
-            )
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: offers.length,
+              itemBuilder: (BuildContext context, int index) {
+                return offers[index];
+              },
+            ),
           ],
         ),
       ),
@@ -118,57 +124,56 @@ class _SearchPageState extends State<SearchPage> {
 
   Widget buildPost(String img, String title, String subTitle, int stores) {
     return Container(
-        margin: EdgeInsets.all(20),
-        padding: EdgeInsets.all(10),
-        child: Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width * 0.4,
-                height: MediaQuery.of(context).size.width * 0.4,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                  image: NetworkImage(img),
-                  fit: BoxFit.cover,
-                )),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.4,
-                height: MediaQuery.of(context).size.width * 0.4,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                          title,
-                          style: TextStyle(
-                            color: Colors.black87,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                    Text(
-                      subTitle,
-                      style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 16,
-                      ),
-                    ),
-                    Text(
-                      "$stores Stores",
-                      style: TextStyle(
-                        color: primaryColor,
-                        fontSize: 14,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ],
+      margin: EdgeInsets.all(20),
+      padding: EdgeInsets.all(10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width * 0.4,
+            height: MediaQuery.of(context).size.width * 0.4,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+              image: NetworkImage(img),
+              fit: BoxFit.cover,
+            )),
           ),
-        ));
+          Container(
+            width: MediaQuery.of(context).size.width * 0.4,
+            height: MediaQuery.of(context).size.width * 0.4,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+                Text(
+                  subTitle,
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  "$stores Stores",
+                  style: TextStyle(
+                    color: primaryColor,
+                    fontSize: 14,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
