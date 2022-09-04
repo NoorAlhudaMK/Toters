@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../Data/data.dart';
-import 'account_screen.dart';
-import 'home_screen.dart';
-import 'wallet_screen.dart';
 
 class OrdersPage extends StatefulWidget {
   const OrdersPage({Key? key}) : super(key: key);
@@ -12,58 +9,66 @@ class OrdersPage extends StatefulWidget {
   State<OrdersPage> createState() => _OrdersPageState();
 }
 
-class _OrdersPageState extends State<OrdersPage> {
-  int selected = 1;
-  List<Widget> screens = [
-    AccountPage(),
-    OrdersPage(),
-    WalletPage(),
-    TotersHome(),
-  ];
+class _OrdersPageState extends State<OrdersPage>
+    with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Image.asset("assets/images/under_construction.png"),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.account_circle_outlined,
+    return DefaultTabController(
+      initialIndex: 1,
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          toolbarHeight: 20,
+          bottom: TabBar(
+            unselectedLabelColor: primaryColor,
+            tabs: <Widget>[
+              Tab(
+                child: Text(
+                  "Past Order",
+                  style: TextStyle(
+                    color: primaryColor,
+                    fontSize: 18,
+                  ),
+                ),
               ),
-              label: 'الحساب'),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.featured_play_list_outlined,
+              Tab(
+                child: Text(
+                  "Upcoming",
+                  style: TextStyle(
+                    color: primaryColor,
+                    fontSize: 18,
+                  ),
+                ),
               ),
-              label: 'الطلبات'),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.wallet,
-            ),
-            label: 'المحفظة',
-            tooltip: 'الرئيسية',
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
+          elevation: 0,
+        ),
+        body: TabBarView(
+          children: <Widget>[
+            Center(
+              child: Text(
+                "You do not have any pat orders",
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
             ),
-            label: 'الرئيسية',
-            tooltip: 'الرئيسية',
-          ),
-        ],
-        selectedItemColor: primaryColor,
-        unselectedItemColor: greyColor,
-        selectedIconTheme: IconThemeData(size: 32),
-        unselectedIconTheme: IconThemeData(size: 30),
-        selectedLabelStyle: TextStyle(fontSize: 16, color: primaryColor),
-        unselectedLabelStyle: TextStyle(fontSize: 14, color: primaryColor),
-        currentIndex: selected,
-        onTap: (index) {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => screens[index]));
-        },
+            Center(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/empty_basket.png",
+                  width: MediaQuery.of(context).size.width * 0.5,
+                ),
+                Text("You do not have any pat orders"),
+              ],
+            )),
+          ],
+        ),
       ),
     );
   }
