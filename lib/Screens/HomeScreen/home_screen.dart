@@ -1,8 +1,10 @@
 import 'package:carousel_images/carousel_images.dart';
 import 'package:flutter/material.dart';
-import 'package:toters/Screens/restueant_screen.dart';
+import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:toters/Screens/ResturantsScreen/restueant_screen.dart';
 
-import '../../Data/data.dart';
+import '../../../Data/data.dart';
+import '../MapScreen/map_screen.dart';
 
 class TotersHome extends StatefulWidget {
   const TotersHome({Key? key}) : super(key: key);
@@ -12,12 +14,6 @@ class TotersHome extends StatefulWidget {
 }
 
 class _TotersHomeState extends State<TotersHome> {
-  final List<String> listImages = [
-    resImg1,
-    resImg2,
-    resImg3,
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,11 +70,17 @@ class _TotersHomeState extends State<TotersHome> {
                     SizedBox(
                       width: 5,
                     ),
-                    Text(
-                      "بيروت, لبنان",
-                      style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 18,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => MapPage()));
+                      },
+                      child: Text(
+                        "بيروت, لبنان",
+                        style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                   ],
@@ -128,7 +130,7 @@ class _TotersHomeState extends State<TotersHome> {
       margin: EdgeInsets.only(
         left: 5,
         right: 5,
-        bottom: 10,
+        bottom: 2,
       ),
       padding: EdgeInsets.only(left: 0, right: 0, bottom: 2, top: 2),
       child: Row(
@@ -139,7 +141,7 @@ class _TotersHomeState extends State<TotersHome> {
             " ! سجل الدخول باستخدام تطبيق توترز و استمتع بمزايا حصرية",
             style: TextStyle(
               color: Colors.black87,
-              fontSize: 16,
+              fontSize: 15,
             ),
           ),
           SizedBox(
@@ -160,17 +162,35 @@ class _TotersHomeState extends State<TotersHome> {
 
   Widget buildSlider() {
     return Padding(
-      padding: EdgeInsets.all(10),
-      child: CarouselImages(
-        scaleFactor: 0.7,
-        listImages: listImages,
-        height: 300.0,
-        borderRadius: 15.0,
-        cachedNetworkImage: true,
-        verticalAlignment: Alignment.bottomCenter,
-        onTap: (index) {
-          print('Tapped on page $index');
-        },
+      padding: EdgeInsets.all(15),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        margin: EdgeInsets.all(3),
+        child: ImageSlideshow(
+          indicatorColor: Colors.white,
+          indicatorBackgroundColor: Colors.grey,
+          onPageChanged: (value) {
+            debugPrint('Page changed: $value');
+          },
+          autoPlayInterval: 3000,
+          isLoop: true,
+          children: [
+            Image.network(
+              resImg1,
+              fit: BoxFit.cover,
+            ),
+            Image.network(
+              resImg2,
+              fit: BoxFit.cover,
+            ),
+            Image.network(
+              resImg3,
+              fit: BoxFit.cover,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -199,12 +219,12 @@ class _TotersHomeState extends State<TotersHome> {
     );
   }
 
-  Widget buildTypesColumn(String typeImage, String typeText, bool isTop) {
+  Widget buildTypesColumn(String typeImage, String typeText, bool isThree) {
     return Container(
       margin: EdgeInsets.all(
         MediaQuery.of(context).size.width * 0.025,
       ),
-      padding: isTop
+      padding: isThree
           ? EdgeInsets.all(
               MediaQuery.of(context).size.width * 0.035,
             )
@@ -276,22 +296,21 @@ class _TotersHomeState extends State<TotersHome> {
 
   Widget buildSpecialsSlider() {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.4,
-      child: Directionality(
-        textDirection: TextDirection.rtl,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: [
-            buildSpecialsColumn(resImg1, 1, name1, description1, min1, max1,
-                rate1, rateNum1, commName1, commRate1, comment1),
-            buildSpecialsColumn(resImg2, 2, name2, description2, min2, max2,
-                rate2, rateNum2, commName2, commRate2, comment2),
-            buildSpecialsColumn(resImg3, 3, name3, description3, min3, max3,
-                rate3, rateNum3, commName3, commRate3, comment3),
-          ],
-        ),
-      )
-    );
+        height: MediaQuery.of(context).size.height * 0.4,
+        child: Directionality(
+          textDirection: TextDirection.rtl,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              buildSpecialsColumn(resImg1, 1, name1, description1, min1, max1,
+                  rate1, rateNum1, commName1, commRate1, comment1),
+              buildSpecialsColumn(resImg2, 2, name2, description2, min2, max2,
+                  rate2, rateNum2, commName2, commRate2, comment2),
+              buildSpecialsColumn(resImg3, 3, name3, description3, min3, max3,
+                  rate3, rateNum3, commName3, commRate3, comment3),
+            ],
+          ),
+        ));
   }
 
   Widget buildSpecialsColumn(
@@ -313,7 +332,10 @@ class _TotersHomeState extends State<TotersHome> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(bottom: 10, top: 10,),
+            padding: EdgeInsets.only(
+              bottom: 10,
+              top: 10,
+            ),
             child: Stack(
               clipBehavior: Clip.none,
               children: [

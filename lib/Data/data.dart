@@ -5,6 +5,8 @@ Color greyColor = Colors.grey.withOpacity(0.6);
 Color lightGreyColor = Colors.grey.withOpacity(0.2);
 Color lightBlackColor = Colors.black;
 
+bool isUserLoggedIn = false;
+
 String dietDish = "https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/eggs-breakfast-avocado-1296x728-header.jpg?w=1155&h=1528";
 String flowers = "https://sf.tac-cdn.net/images/products/large/FTD-S34-4515.jpg";
 String coffee = "https://www.tastingtable.com/img/gallery/coffee-brands-ranked-from-worst-to-best/l-intro-1645231221.jpg";
@@ -32,6 +34,7 @@ int rateNum1 = 1200;
 String commName1 = "Adnan";
 double commRate1 = 5;
 String comment1 = "الطعم رهيييب حبيته كلللش و التوصيل سريع ان شاء الله مو آخر مرة";
+double mealPrice1 = 3500;
 
 /// Card 2 info :
 
@@ -45,6 +48,7 @@ int rateNum2 = 1000;
 String commName2 = "Zahraa";
 double commRate2 = 4.5;
 String comment2 = "الأكل كُلللش طيب و الصوص الحار اضافة حلوة و الطهي ممتاز";
+double mealPrice2 = 4500;
 
 /// Card 3 info :
 
@@ -58,12 +62,104 @@ int rateNum3 = 1400;
 String commName3 = "Noor";
 double commRate3 = 5.0;
 String comment3 = "أطيب شاورما ببغداااااااد بدون منازع";
+double mealPrice3 = 5000;
 
 
+/// localhost:4000/
 
+/*
+    /images
+    /images/imageid/:image_id
+    /images/imagename/:image_name
+    /images/addimage
 
+    /users
+    /users/userid/:user_id
+    /users/addusere
+    /users/deleteuser/:user_id
 
+    /resturants
+    /resturants/resturantid/:resturant_id
+    /resturants/addresturant
 
+    /types
+    /types/typeid/:type_id
+    /types/addtype
+
+    /offers
+    /offers/offerid/:offer_id
+    /offers/addoffer
+
+    /sections
+    /sections/sectionid/:section_id
+    /sections/addsection
+
+    /ratings
+    /ratings/ratingsid/:rating_id
+    /ratings/addrating
+
+    /questionschoices
+    /questionschoices/questionschoicesid/:question_choices_id
+    /questionschoices/addquestionschoices
+
+    /questions
+    /questions/questionid/:question_id
+    /questions/addquestions
+
+    /choices
+    /choices/choiceid/:choice_id
+    /choices/addchoice
+
+    /advertisements
+    /advertisements/advertisementid/:advertisement_id
+    /advertisements/addadvertisement
+
+    /notifications
+    /notifications/notificationid/:notification_id
+    /notifications/addnotification
+
+    /options
+    /options/optionid/:option_id'
+    /options/addoption
+
+    /orders
+    /orders/orderid/:order_id
+    /orders/addorder
+
+    /ordersproducts
+    /ordersproducts/orderproductsid/:order_products_id
+    /ordersproducts/addorderproducts
+
+    /ordersstates
+    /ordersstates/orderstatesid/:order_state_id
+    /ordersstates/addorderstates
+
+    /products
+    /products/productsid/:product_id
+    /products/addproduct
+
+    /productsoptions
+    /productsoptions/productoptionsid/:products_options_id
+    /productoptions/addproductoptions
+
+    /promocodes
+    /promocodes/promocodeid/:promo_code_id
+    /promocodes/addpromocode
+
+    /splashadvertisements
+    /splashadvertisements/splashadvertisementid/:splash_advertisement_id
+    /splashadvertisements/addsplashadvertisement
+
+    /usernotification
+    /usernotification/usernotificationid/:user_notification_id
+    /usernotification/addusernotification
+
+    /resturantsratings
+    /resturantsratings/resturantsratingid/:resturant_ratings_id
+    /resturantsratings/addresturantsratings
+ */
+
+/// https://developns.ca/wp-content/uploads/2021/04/assorted-indian-recipes-food-various_79295-7226.jpg
 
 
 

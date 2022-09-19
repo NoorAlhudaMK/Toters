@@ -2,14 +2,12 @@ import 'package:awesome_bottom_bar/widgets/inspired/inspired.dart';
 import 'package:flutter/material.dart';
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 
-import '../Data/data.dart';
-import 'account_screen.dart';
-import 'delegate_screen.dart';
-import 'food_details.dart';
-import 'home_screen.dart';
-import 'orders_screen.dart';
-import 'restueant_screen.dart';
-import 'search_screen.dart';
+import '../../Data/data.dart';
+import '../AccountScreen/account_screen.dart';
+import '../DelegateScreen/delegate_screen.dart';
+import '../HomeScreen/home_screen.dart';
+import '../OrdersScreen/orders_screen.dart';
+import '../SearchScreen/search_screen.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({Key? key}) : super(key: key);
@@ -42,37 +40,18 @@ class _BottomBarState extends State<BottomBar> {
       title: 'رئيسية',
     ),
   ];
-  Map<int, GlobalKey<NavigatorState>> navigatorKeys = {
-    0: GlobalKey<NavigatorState>(),
-    1: GlobalKey<NavigatorState>(),
-    2: GlobalKey<NavigatorState>(),
-    3: GlobalKey<NavigatorState>(),
-    4: GlobalKey<NavigatorState>(),
-    5: GlobalKey<NavigatorState>(),
-    6: GlobalKey<NavigatorState>(),
-  };
   List<Widget> screens = [
     AccountPage(),
     OrdersPage(),
     DelegatePage(),
     SearchPage(),
     TotersHome(),
-    ResturantPage(resImage: resImg1, resName: name1 , resDescreption: description1, minDeliver: min1,
-    maxDeliver: max1, rate: rate1, ratingsNum: rateNum1, commentName: commName1, commentRate: commRate1,
-      comment: comment1,
-    ),
-    FoodDetails(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Navigator(
-        key: navigatorKeys[selected],
-        onGenerateRoute: (RouteSettings settings) {
-          return MaterialPageRoute(builder: (_) => screens.elementAt(selected));
-        },
-      ), //screens[selected],
+      body: screens.elementAt(selected),//screens[selected],
       bottomNavigationBar: BottomBarDefault(
         items: items,
         backgroundColor: Colors.white,

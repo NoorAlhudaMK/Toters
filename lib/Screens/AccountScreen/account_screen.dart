@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Data/data.dart';
+import '../../Data/data.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -107,7 +107,7 @@ class _AccountPageState extends State<AccountPage> {
                     ],
                   ),
                 ),
-                Container(
+                isUserLoggedIn ? Container(
                   padding: EdgeInsets.all(20),
                   margin: EdgeInsets.only(
                     left: 20,
@@ -159,8 +159,8 @@ class _AccountPageState extends State<AccountPage> {
                       ),
                     ],
                   ),
-                ),
-                Container(
+                ) : Container(),
+                isUserLoggedIn ? Container(
                   padding: EdgeInsets.all(20),
                   margin: EdgeInsets.only(
                     left: 20,
@@ -203,8 +203,8 @@ class _AccountPageState extends State<AccountPage> {
                       ),
                     ],
                   ),
-                ),
-                Container(
+                ) : Container(),
+                isUserLoggedIn ? Container(
                   padding: EdgeInsets.all(20),
                   margin: EdgeInsets.only(
                     left: 20,
@@ -274,7 +274,7 @@ class _AccountPageState extends State<AccountPage> {
                       ),
                     ],
                   ),
-                ),
+                ) : Container(),
                 Container(
                   padding: EdgeInsets.all(20),
                   margin: EdgeInsets.only(
@@ -337,7 +337,36 @@ class _AccountPageState extends State<AccountPage> {
                     ],
                   ),
                 ),
-                Container(
+                isUserLoggedIn ? Container(
+                  padding: EdgeInsets.all(10),
+                  margin: EdgeInsets.only(
+                    left: 20,
+                    right: 20,
+                    bottom: 10,
+                    top: 10,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.login,
+                        color: Colors.red,
+                        size: 30,
+                      ),
+                      SizedBox(width: 10,),
+                      Text(
+                        "Sign in",
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 20,
+                        ),
+                      )
+                    ],
+                  ),
+                ) : Container(
                   padding: EdgeInsets.all(10),
                   margin: EdgeInsets.only(
                     left: 20,
