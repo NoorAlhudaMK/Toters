@@ -13,9 +13,6 @@ I use the following to create this project:
 - [Flutter] - Frontend - Dart.
 - [Postman] - Test API.
 
-And of course Dillinger itself is open source with a [public repository][dill]
- on GitHub.
-
 ## Installation
 
 You must have MAMP to use this repo on your device.
