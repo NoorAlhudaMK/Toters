@@ -1,6 +1,83 @@
 # Toters
+## Toters App - By Noor Alhuda M.K.
 
-Toters App UI
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+
+## Tech
+
+I use the following to create this project:
+
+- [Android Studio] - Editer for Flutter code.
+- [phpMyAdmin] - Create Database.
+- [node js] - link database ti API.
+- [Flutter] - Frontend - Dart.
+- [Postman] - Test API.
+
+And of course Dillinger itself is open source with a [public repository][dill]
+ on GitHub.
+
+## Installation
+
+You must have MAMP to use this repo on your device.
+
+## Dependencies
+
+| Plugin | Version |
+| ------ | ------ |
+| cupertino_icons | ^1.0.2 |
+| awesome_bottom_bar | ^1.2.1 |
+| flutter_image_slideshow | ^0.1.4 |
+| google_maps_flutter | ^2.2.0 |
+| http | ^0.13.5 |
+
+## Development
+
+Want to contribute? Great!
+
+Make a change in your file and instantaneously see your updates!
+
+Open your Android Studio Terminal and run these commands.
+
+First Tab:
+
+```sh
+flutter clean
+```
+
+Second Tab:
+
+```sh
+flutter pub get
+```
+
+## License
+
+MIT
+
+**Free Software, Hell Yeah!**
+
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+
+   [dill]: <https://github.com/joemccann/dillinger>
+   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
+   [john gruber]: <http://daringfireball.net>
+   [df1]: <http://daringfireball.net/projects/markdown/>
+   [markdown-it]: <https://github.com/markdown-it/markdown-it>
+   [Ace Editor]: <http://ace.ajax.org>
+   [node.js]: <http://nodejs.org>
+   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
+   [jQuery]: <http://jquery.com>
+   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
+   [express]: <http://expressjs.com>
+   [AngularJS]: <http://angularjs.org>
+   [Gulp]: <http://gulpjs.com>
+
+   [PlDb]: <https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md>
+   [PlGh]: <https://github.com/joemccann/dillinger/tree/master/plugins/github/README.md>
+   [PlGd]: <https://github.com/joemccann/dillinger/tree/master/plugins/googledrive/README.md>
+   [PlOd]: <https://github.com/joemccann/dillinger/tree/master/plugins/onedrive/README.md>
+   [PlMe]: <https://github.com/joemccann/dillinger/tree/master/plugins/medium/README.md>
+   [PlGa]: <https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md>
 
 Screens:
 
